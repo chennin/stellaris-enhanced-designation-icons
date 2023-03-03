@@ -77,7 +77,6 @@ ENH_DEF = {
 }
 
 for i in range(0, int(game_desig_w / ICON_WIDTH), 1):
-  box = (i*ICON_WIDTH, 0, (i+1)*ICON_WIDTH, ICON_HEIGHT)
   icon_name = ICON_ORDER[i]
 
   if icon_name in REPLACEMENTS:

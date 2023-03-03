@@ -55,13 +55,17 @@ REPLACEMENTS = {
   "factory": "gfx/interface/icons/resources/consumer_goods_large.dds",
 #  "refinery": "gfx/interface/icons/resources/exotic_gases_large.dds",
   "refinery": "gfx/interface/icons/menu_icon_strategic_resource.dds",
-  "tech": "gfx/interface/icons/resources/engineering_research.dds",
+#  "tech": "gfx/interface/icons/resources/engineering_research.dds",
 #  "tech": "gfx/interface/icons/resources/physics_research.dds",
 #  "tech": "gfx/interface/icons/text_icons/text_icon_science_ship.dds",
+  "tech": "gfx/interface/icons/research_icon.dds",
 
   "unification": "gfx/interface/icons/resources/unity.dds",
   # leisure desigs only exist on habitats
-  "leisure": "gfx/interface/icons/planet_amenities.dds"
+  "leisure": "gfx/interface/icons/planet_amenities.dds",
+  "engineering": "gfx/interface/icons/resources/engineering_research.dds",
+  "physics": "gfx/interface/icons/resources/physics_research.dds",
+  "society": "gfx/interface/icons/resources/society_research.dds",
 }
 
 game_desig_file = Image.open(f"{GAME_FILES}/{GAME_PATH}/{FILE_NAME}")
@@ -75,6 +79,15 @@ ENH_DEF = {
   "penal": game_desig_file.crop( (ICON_ORDER.index("penal") * ICON_WIDTH, 0, (ICON_ORDER.index("penal") + 1) * ICON_WIDTH, ICON_HEIGHT) ).filter(ImageFilter.EDGE_ENHANCE_MORE).filter(ImageFilter.SMOOTH),
   "resort": game_desig_file.crop( (ICON_ORDER.index("resort") * ICON_WIDTH, 0, (ICON_ORDER.index("resort") + 1) * ICON_WIDTH, ICON_HEIGHT) ).filter(ImageFilter.EDGE_ENHANCE).filter(ImageFilter.SMOOTH),
 }
+# Make a research icon out of the 3 resources
+#tech_icon = Image.new("RGBA", (ICON_WIDTH, ICON_HEIGHT), '#00000000')
+#phy_icon = Image.open( f"{GAME_FILES}/{REPLACEMENTS['physics']}" )
+#eng_icon = Image.open( f"{GAME_FILES}/{REPLACEMENTS['engineering']}" )
+#soc_icon = Image.open( f"{GAME_FILES}/{REPLACEMENTS['society']}" )
+#tech_icon.paste( phy_icon, ( int(ICON_WIDTH / 4), 0 ), phy_icon )
+#tech_icon.paste( eng_icon, ( 0, ICON_HEIGHT - eng_icon.height ), eng_icon )
+#tech_icon.paste( soc_icon, ( ICON_WIDTH - soc_icon.width, ICON_HEIGHT - soc_icon.height ), soc_icon )
+#ENH_DEF["tech"] = tech_icon
 
 for i in range(0, int(game_desig_w / ICON_WIDTH), 1):
   icon_name = ICON_ORDER[i]
@@ -85,6 +98,8 @@ for i in range(0, int(game_desig_w / ICON_WIDTH), 1):
       replacement = MISSING_ICON
     new_icon = Image.open(replacement)
     new_icon = new_icon.resize((ICON_WIDTH, ICON_HEIGHT))
+    if icon_name == "tech" and replacement == f"{GAME_FILES}/gfx/interface/icons/research_icon.dds":
+      new_icon = new_icon.filter(ImageFilter.SHARPEN)
     game_desig_file.paste(new_icon, (i*ICON_WIDTH, 0))
 
   # Combine and sometimes modify habitat icon with resource icon

@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from PIL import DdsImagePlugin, Image, ImageFilter, ImageEnhance
-from collections import OrderedDict
 import os, sys
 
 GAME_FILES = os.path.expanduser( os.path.expandvars( "~/stellaris-game" ) )
@@ -64,8 +63,6 @@ REPLACEMENTS = {
   # leisure desigs only exist on habitats
   "leisure": "gfx/interface/icons/planet_amenities.dds"
 }
-
-icons = OrderedDict()
 
 game_desig_file = Image.open(f"{GAME_FILES}/{GAME_PATH}/{FILE_NAME}")
 game_desig_w, game_desig_h = game_desig_file.size

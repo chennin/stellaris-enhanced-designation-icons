@@ -14,7 +14,7 @@ No art was done during the making of this mod.
 
 * Python 3
 * Pillow (python3-pil) 8.3+
-* The game files (this mod entirely use game assets). If you're running this, replace the paths at the top of `designationicons.py`.
+* The game files (this mod uses only game assets to make its graphics). If you're running this, replace the paths at the top of `designationicons.py`.
 
 ## Compression
 

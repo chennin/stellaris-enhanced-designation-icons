@@ -14,8 +14,14 @@ No art was done during the making of this mod.
 
 * Python 3
 * Pillow (python3-pil) 8.3+
-* The game files (this uses many files included with the game). If you're running this, replace the paths at the top of `designationicons.py`.
+* The game files (this mod entirely use game assets). If you're running this, replace the paths at the top of `designationicons.py`.
 
 ## Compression
 
 Can be done with ImageMagick: `mogrify colony_type.dds -compress dxt5`
+
+# Copyright
+
+Art is Copyright © 2014 Paradox Interactive AB. www.paradoxplaza.com.
+
+Python code is copyright me and licensed under the MIT License.

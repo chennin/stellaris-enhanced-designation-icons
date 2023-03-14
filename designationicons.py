@@ -66,6 +66,17 @@ ICON_ORDER = [
   "habitat_unification",
   "habitat_agri",
   "crucible",
+
+  "atomicage",
+  "stoneage",
+  "bronzeage",
+  "earlyspaceage",
+  "industrialage",
+  "ironage",
+  "machineage",
+  "medievalage",
+  "renaissanceage",
+  "steamage",
 ]
 REPLACEMENTS = {
   "urban": "gfx/interface/icons/resources/trade_value_large.dds",
@@ -84,6 +95,7 @@ REPLACEMENTS = {
   "unification": "gfx/interface/icons/resources/unity.dds",
   # leisure desigs only exist on habitats
   "leisure": "gfx/interface/icons/planet_amenities.dds",
+
   "engineering": "gfx/interface/icons/resources/engineering_research.dds",
   "physics": "gfx/interface/icons/resources/physics_research.dds",
   "society": "gfx/interface/icons/resources/society_research.dds",
@@ -95,11 +107,14 @@ game_desig_w, game_desig_h = game_desig_file.size
 # Enhance some default icons for both regular and habitats
 ENH_DEF = {
   "habitat": game_desig_file.crop( (ICON_ORDER.index("habitat") * ICON_WIDTH, 0, (ICON_ORDER.index("habitat") + 1) * ICON_WIDTH, ICON_HEIGHT) ),
-  "fortress": game_desig_file.crop( (ICON_ORDER.index("fortress") * ICON_WIDTH, 0, (ICON_ORDER.index("fortress") + 1) * ICON_WIDTH, ICON_HEIGHT) ).filter(ImageFilter.EDGE_ENHANCE),
+  "fortress": game_desig_file.crop( (ICON_ORDER.index("fortress") * ICON_WIDTH, 0, (ICON_ORDER.index("fortress") + 1) * ICON_WIDTH, ICON_HEIGHT) ),
   "industrial": game_desig_file.crop( (ICON_ORDER.index("industrial") * ICON_WIDTH, 0, (ICON_ORDER.index("industrial") + 1) * ICON_WIDTH, ICON_HEIGHT) ).filter(ImageFilter.EDGE_ENHANCE_MORE).filter(ImageFilter.SMOOTH),
   "penal": game_desig_file.crop( (ICON_ORDER.index("penal") * ICON_WIDTH, 0, (ICON_ORDER.index("penal") + 1) * ICON_WIDTH, ICON_HEIGHT) ).filter(ImageFilter.EDGE_ENHANCE_MORE).filter(ImageFilter.SMOOTH),
   "resort": game_desig_file.crop( (ICON_ORDER.index("resort") * ICON_WIDTH, 0, (ICON_ORDER.index("resort") + 1) * ICON_WIDTH, ICON_HEIGHT) ).filter(ImageFilter.EDGE_ENHANCE).filter(ImageFilter.SMOOTH),
 }
+BRIGHTEN_FACTOR = 1.5
+enhancer = ImageEnhance.Brightness(ENH_DEF["fortress"])
+ENH_DEF["fortress"] = enhancer.enhance(BRIGHTEN_FACTOR)
 # Make a research icon out of the 3 resources
 #tech_icon = Image.new("RGBA", (ICON_WIDTH, ICON_HEIGHT), '#00000000')
 #phy_icon = Image.open( f"{GAME_FILES}/{REPLACEMENTS['physics']}" )
@@ -134,7 +149,6 @@ for i in range(0, int(game_desig_w / ICON_WIDTH), 1):
         replacement = MISSING_ICON
       res_icon = Image.open(replacement)
 
-      BRIGHTEN_FACTOR = 1.5
       # Enhance some just for habitats
       if resource_name in [ "leisure" ] and replacement in [ f"{GAME_FILES}/gfx/interface/icons/planet_amenities.dds", ]:
         res_icon = res_icon.filter(ImageFilter.EDGE_ENHANCE).filter(ImageFilter.SMOOTH)

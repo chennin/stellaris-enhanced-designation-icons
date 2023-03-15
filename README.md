@@ -20,7 +20,7 @@ No art was done during the making of this mod.
 
 ~~Can be done with ImageMagick: `mogrify colony_type.dds -compress dxt5`~~
 
-In 3.7, compressing makes the images look bad, and I don't know DDS well enough to know why. The asset is uncompressed in vanilla [3.6] anyway.
+In 3.7, the image got wider and now compressing makes the replacement look bad, and I don't know DDS well enough to know why. The asset is uncompressed in vanilla [3.6] anyway.
 
 # Copyright
 

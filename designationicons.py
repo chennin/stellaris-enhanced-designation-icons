@@ -77,6 +77,11 @@ ICON_ORDER = [
   "medievalage",
   "renaissanceage",
   "steamage",
+
+  "capital_trade",
+  "capital_factory",
+  "capital_forge",
+  "capital_extraction",
 ]
 REPLACEMENTS = {
   "urban": "gfx/interface/icons/resources/trade_value_large.dds",

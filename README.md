@@ -20,6 +20,10 @@ Run:
 
 `./designationicons.py`
 
+# Uploading
+
+`steamcmd +login $STEAMUSER +workshop_build_item $PWD/steamcmd.txt +quit`
+
 # Copyright
 
 Art is Copyright © 2014 Paradox Interactive AB. www.paradoxplaza.com.

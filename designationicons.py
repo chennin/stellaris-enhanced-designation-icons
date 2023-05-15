@@ -175,4 +175,4 @@ for i in range(0, int(game_desig_w / ICON_WIDTH), 1):
   elif icon_name in ENH_DEF:
     game_desig_file.paste(ENH_DEF[icon_name], (i*ICON_WIDTH, 0))
 
-game_desig_file.save(fp = f"{GAME_PATH}/{FILE_NAME}")
+game_desig_file.save(fp = f"mod/{GAME_PATH}/{FILE_NAME}")

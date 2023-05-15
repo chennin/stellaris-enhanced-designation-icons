@@ -24,7 +24,6 @@ from PIL import DdsImagePlugin, Image, ImageFilter, ImageEnhance
 import os, sys
 
 GAME_FILES = os.path.expanduser( os.path.expandvars( "~/stellaris-game" ) )
-MOD_BASE = os.path.expanduser( os.path.expandvars( "~/stellaris-mod/designationicons" ) )
 GAME_PATH = "gfx/interface/planetview"
 FILE_NAME = "colony_type.dds"
 ICON_WIDTH = 30
@@ -176,4 +175,4 @@ for i in range(0, int(game_desig_w / ICON_WIDTH), 1):
   elif icon_name in ENH_DEF:
     game_desig_file.paste(ENH_DEF[icon_name], (i*ICON_WIDTH, 0))
 
-game_desig_file.save(fp = f"{MOD_BASE}/{GAME_PATH}/{FILE_NAME}")
+game_desig_file.save(fp = f"{GAME_PATH}/{FILE_NAME}")

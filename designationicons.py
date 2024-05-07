@@ -81,6 +81,8 @@ ICON_ORDER = [
   "capital_factory",
   "capital_forge",
   "capital_extraction",
+
+  "cosmogenesis_world",
 ]
 REPLACEMENTS = {
   "urban": "gfx/interface/icons/resources/trade_value_large.dds",
